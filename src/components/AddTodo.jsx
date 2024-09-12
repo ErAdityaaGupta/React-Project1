@@ -23,7 +23,7 @@ function AddTodo({ onNewItem }) {
   };
 
   return (
-    <div className="container text-center">
+    <div className={`"container text-center" ${styles.AddTodo}`} >
       <div className="row">
         <div className="col-6">
           <input

@@ -62,34 +62,44 @@ import AddTodo from "./components/AddTodo";
 // import TodoItem from "./components/TodoItem";
 import "./App.css";
 import TodoItems from "./components/TodoItems";
+import WelcomeMessage from "./components/WelcomeMessage";
 import { useState } from "react";
 
 function App() {
-  const initialTodoItems = [
-    {
-      name: "Buy Milk",
-      dueDate: "4/10/2023",
-    },
-    {
-      name: "Go to Collage",
-      dueDate: "6/10/2023",
-    },
-    {
-      name: "Start Programming",
-      dueDate: "6/10/2023",
-    },
-  ];
+  // const initialTodoItems = [
+  //   {
+  //     name: "Buy Milk",
+  //     dueDate: "4/10/2023",
+  //   },
+  //   {
+  //     name: "Go to Collage",
+  //     dueDate: "6/10/2023",
+  //   },
+  //   {
+  //     name: "Start Programming",
+  //     dueDate: "6/10/2023",
+  //   },
+  // ];
 
-  const [todoItems, setTodoItems] = useState(initialTodoItems);
+  // const [todoItems, setTodoItems] = useState(initialTodoItems);
+
+  const [todoItems, setTodoItems] = useState([]);
 
   const handleNewItem = (itemName, itemDueDate) => {
     console.log(`New Item Added: ${itemName} Date: ${itemDueDate}`);
+    const newTodoItems = [
+      ...todoItems,
+      { name: itemName, dueDate: itemDueDate },
+    ];
+
+    setTodoItems(newTodoItems);
   };
 
   return (
     <center>
       <AppName></AppName>
       <AddTodo onNewItem={handleNewItem}></AddTodo>
+      {todoItems.length === 0 && <WelcomeMessage></WelcomeMessage>}
       <TodoItems todoItems={todoItems}></TodoItems>
       {/* <TodoItem1></TodoItem1> */}
       {/* <TodoItem2></TodoItem2> */}
