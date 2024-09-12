@@ -95,12 +95,21 @@ function App() {
     setTodoItems(newTodoItems);
   };
 
+  const handleDeleteItem = (todoItemName) => {
+    const newTodoItems = todoItems.filter((item) => item.name !== todoItemName);
+    setTodoItems(newTodoItems);
+    // console.log(`Item Deleted: ${todoItemName}`)
+  };
+
   return (
     <center>
       <AppName></AppName>
       <AddTodo onNewItem={handleNewItem}></AddTodo>
       {todoItems.length === 0 && <WelcomeMessage></WelcomeMessage>}
-      <TodoItems todoItems={todoItems}></TodoItems>
+      <TodoItems
+        todoItems={todoItems}
+        onDeleteClick={handleDeleteItem}
+      ></TodoItems>
       {/* <TodoItem1></TodoItem1> */}
       {/* <TodoItem2></TodoItem2> */}
       {/* <TodoItem todoDate={"4/10/2023"} todoName={"Buy Milk"}></TodoItem>

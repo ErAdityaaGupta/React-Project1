@@ -2,11 +2,11 @@
 /* eslint-disable react/prop-types */
 import TodoItem from "./TodoItem";
 
-function TodoItems({ todoItems }) {
+function TodoItems({ todoItems, onDeleteClick }) {
   return (
     <>
       {todoItems.map((item) => (
-        <TodoItem todoDate={item.dueDate} todoName={item.name}></TodoItem>
+        <TodoItem todoDate={item.dueDate} todoName={item.name} onDeleteClick={onDeleteClick}></TodoItem>
       ))}
 
       {/* <TodoItem todoDate={"4/10/2023"} todoName={"Buy Milk"}></TodoItem>
