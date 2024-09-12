@@ -1,11 +1,11 @@
 import styles from "./AddTodo.module.css";
 
-function AddTodo() {
+function AddTodo({ onNewItem }) {
   return (
     <div className="container text-center">
       <div className="row">
         <div className="col-6">
-          <input type="text" placeholder="Enter Todo Here"/>
+          <input type="text" placeholder="Enter Todo Here" />
         </div>
         <div className="col-4">
           <input type="date" />
@@ -14,6 +14,7 @@ function AddTodo() {
           <button
             type="button"
             className={`"btn btn-success" ${styles.button}`}
+            onClick={() => onNewItem("a", "b")}
           >
             Add
           </button>
