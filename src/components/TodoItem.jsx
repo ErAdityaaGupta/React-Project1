@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import styles from "./TodoItem.module.css";
+import { MdDelete } from "react-icons/md";
 
 function TodoItem({ todoName, todoDate, onDeleteClick }) {
   return (
@@ -13,7 +14,8 @@ function TodoItem({ todoName, todoDate, onDeleteClick }) {
             className="btn btn-danger"
             onClick={() => onDeleteClick(todoName)}
           >
-            Delete
+            {/* Delete */}
+            <MdDelete />
           </button>
         </div>
       </div>

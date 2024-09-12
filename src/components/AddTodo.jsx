@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import styles from "./AddTodo.module.css";
+import { MdFormatListBulletedAdd } from "react-icons/md";
 
 function AddTodo({ onNewItem }) {
-  const [todoName, setTodoName] = useState();
-  const [dueDate, setDueDate] = useState();
+  const [todoName, setTodoName] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
   const handleNameChange = (event) => {
     // console.log(event);
@@ -23,7 +24,7 @@ function AddTodo({ onNewItem }) {
   };
 
   return (
-    <div className={`"container text-center" ${styles.AddTodo}`} >
+    <div className={`"container text-center" ${styles.AddTodo}`}>
       <div className="row">
         <div className="col-6">
           <input
@@ -43,7 +44,9 @@ function AddTodo({ onNewItem }) {
             // onClick={() => onNewItem("a", "b")}
             onClick={handleAddButtonClick}
           >
-            Add
+            {/* Add */}
+            {/* MdFormatListBulletedAdd */}
+            <MdFormatListBulletedAdd />
           </button>
         </div>
       </div>
