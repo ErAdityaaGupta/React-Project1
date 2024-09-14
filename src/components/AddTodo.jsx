@@ -1,28 +1,39 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+// import { useState } from "react";
+import { useRef } from "react";
 import styles from "./AddTodo.module.css";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 
 function AddTodo({ onNewItem }) {
-  const [todoName, setTodoName] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  // const [todoName, setTodoName] = useState("");
+  // const [dueDate, setDueDate] = useState("");
+  // const noOfUpdates = useRef(0);
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
 
-  const handleNameChange = (event) => {
-    // console.log(event);
-    setTodoName(event.target.value);
-  };
+  // const handleNameChange = (event) => {
+  //   // console.log(event);
+  //   setTodoName(event.target.value);
+  //   noOfUpdates.current += 1;
+  // };
 
-  const handleDateChange = (event) => {
-    // console.log(event);
-    setDueDate(event.target.value);
-  };
+  // const handleDateChange = (event) => {
+  //   // console.log(event);
+  //   setDueDate(event.target.value);
+  //   console.log(`noOfUpdates are: ${noOfUpdates.current}`);
+  // };
 
   const handleAddButtonClick = (event) => {
     console.log(event);
     event.preventDefault();
+    const todoName = todoNameElement.current.value;
+    const dueDate = dueDateElement.current.value;
+    todoNameElement.current.value = "";
+    dueDateElement.current.value = "";
+    console.log(`${todoName} is due on: ${dueDate}`);
     onNewItem(todoName, dueDate);
-    setDueDate("");
-    setTodoName("");
+    // setDueDate("");
+    // setTodoName("");
   };
 
   return (
@@ -31,13 +42,19 @@ function AddTodo({ onNewItem }) {
         <div className="col-6">
           <input
             type="text"
+            ref={todoNameElement}
             placeholder="Enter Todo Here"
-            value={todoName}
-            onChange={handleNameChange}
+            // value={todoName}
+            // onChange={handleNameChange}
           />
         </div>
         <div className="col-4">
-          <input type="date" value={dueDate} onChange={handleDateChange} />
+          <input
+            type="date"
+            ref={dueDateElement}
+            // value={dueDate}
+            // onChange={handleDateChange}
+          />
         </div>
         <div className="col-2">
           <button
